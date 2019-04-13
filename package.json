@@ -1,0 +1,22 @@
+{
+  "name": "react-upload-folders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server:watch": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "development": "concurrently \"npm run server:watch\" \"npm run client\" "
+  },  
+  "author": "Chau Dinh <chaudvb95uc@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-fileupload": "^1.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}
