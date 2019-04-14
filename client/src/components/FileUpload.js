@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 import Message from "./Message";
+import Progress from "./Progress";
 
 const FileUpload = () => {
   const [file, setFile] = useState('');
@@ -29,7 +30,7 @@ const FileUpload = () => {
           setUploadPercentage(parseInt(Math.round((progressEvent.loaded * 100) / progressEvent.total)));
           
           // Clear percentage
-          setTimeout(() => setUploadPercentage(0), 10000);
+          setTimeout(() => setUploadPercentage(0), 2000);
         }
       });
 
@@ -47,13 +48,15 @@ const FileUpload = () => {
   }
 
   return (
-    <Fragment>
+    <>
       {message ? <Message msg={message}/> : null}
       <form onSubmit={onSubmit}>
-      <div className="custom-file">
+      <div className="custom-file mb-3">
         <input type="file" className="custom-file-input" id="customFile" onChange={onChange}/>
         <label className="custom-file-label" htmlFor="customFile">{filename}</label>
       </div>
+
+      <Progress percentage={uploadPercentage} />
 
       <input type="submit" value="Upload" className="btn btn-primary btn-block mt-4"/>
       </form>
@@ -64,7 +67,7 @@ const FileUpload = () => {
           <img src={uploadedFile.filePath} style={{ width: '100%' }} alt="" />
         </div>
       </div> : null }
-    </Fragment>
+    </>
   )
 };
 
